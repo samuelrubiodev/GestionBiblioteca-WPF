@@ -4,9 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Biblioteca"
-        mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Grid.Column="0" VerticalAlignment="Center" >
+            <TextBlock Text="¡Bienvenido" TextWrapping="NoWrap" FontSize="50" HorizontalAlignment="Center"></TextBlock>
+            <TextBlock Text="al panel de administración!" TextWrapping="Wrap" FontSize="30" HorizontalAlignment="Center"></TextBlock>
+            <TextBlock Text="Por favor inicie sesión" TextWrapping="Wrap" FontSize="15" HorizontalAlignment="Center"></TextBlock>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Center">
+            <TextBlock Text="Usuario" TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Center" Margin="10,10,10,10"></TextBlock>
+            <TextBox Name="txtUsuario" Width="200" Height="30" HorizontalAlignment="Center" Margin="10,10,10,10" Text="{Binding Usuario, Mode=TwoWay}"></TextBox>
+            <TextBlock Text="Contraseña" TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Center" Margin="10,10,10,10"></TextBlock>
+            <TextBox Name="txtContrasena" Width="200" Height="30" HorizontalAlignment="Center" Margin="10,10,10,10" Text="{Binding Contrasena, Mode=TwoWay}"></TextBox>
+            <Button Name="btnIniciarSesion" Content="Iniciar Sesión" Width="200" 
+                    Height="30" HorizontalAlignment="Center" Margin="10,10,10,10" 
+                    Command="{Binding LoginCommand}"></Button>
+        </StackPanel>
     </Grid>
 </Window>

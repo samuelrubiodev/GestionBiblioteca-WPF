@@ -1,0 +1,84 @@
+﻿<Window x:Class="Biblioteca.View.GestionBiblioteca"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Biblioteca.View"
+        mc:Ignorable="d"
+        Title="GestionBiblioteca" Height="720" Width="1280">
+    <Grid>
+        <Grid.ShowGridLines>True</Grid.ShowGridLines>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="30*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top">
+            <TextBlock Text="CREAR LIBROS" FontSize="36" Margin="10,10,10,10"></TextBlock>
+            <TextBlock Text="Título" FontSize="20" HorizontalAlignment="Center" ></TextBlock>
+            <TextBox Name="txtTitulo" Width="200" Height="30"></TextBox>
+            <TextBlock Text="Autor" FontSize="20" HorizontalAlignment="Center" ></TextBlock>
+            <TextBox Name="txtAutor" Width="200" Height="30"></TextBox>
+            <TextBlock Text="Año de publicación" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+            <TextBox Name="txtAnio" Width="200" Height="30"></TextBox>
+            <TextBlock Text="Género" FontSize="20" HorizontalAlignment="Center" ></TextBlock>
+            <TextBox Name="txtGenero" Width="200" Height="30"></TextBox>
+            <TextBlock Text="ISBN" FontSize="20" HorizontalAlignment="Center" ></TextBlock>
+            <TextBox Name="textIsbn" Width="200" Height="30"></TextBox>
+            <Button Name="btnCrearLibro" Content="Crear Libro" Width="200" Height="30" Margin="10,10,10,10"></Button>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top">
+            <TextBlock Text="CREAR PRESTAMOS" FontSize="36" Margin="10,10,10,10"></TextBlock>
+            <TextBlock Text="ID Libro" FontSize="20" HorizontalAlignment="Center" ></TextBlock>
+            <TextBox Name="txtIdLibro" Width="200" Height="30"></TextBox>
+            <TextBlock Text="ID Usuario" FontSize="20" HorizontalAlignment="Center" ></TextBlock>
+            <TextBox Name="txtIdUsuario" Width="200" Height="30"></TextBox>
+            <TextBlock Text="Fecha de préstamo" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+            <TextBox Name="txtFechaPrestamo" Width="200" Height="30"></TextBox>
+            <TextBlock Text="Fecha de devolución" FontSize="20" HorizontalAlignment="Center" ></TextBlock>
+            <TextBox Name="txtFechaDevolucion" Width="200" Height="30"></TextBox>
+            <Button Name="btnCrearPrestamo" Content="Crear Préstamo" Width="200" Height="30" Margin="10,10,10,10"></Button>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1">
+            <TextBlock Text="CREAR USUARIOS" FontSize="36"></TextBlock>
+            <TextBlock Text="Nombre" FontSize="20" HorizontalAlignment="Center" ></TextBlock>
+            <TextBox Name="txtNombre" Width="200" Height="30"></TextBox>
+            <TextBlock Text="Apellido" FontSize="20" HorizontalAlignment="Center" ></TextBlock>
+            <TextBox Name="txtApellido" Width="200" Height="30"></TextBox>
+            <TextBlock Text="Correo" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+            <TextBox Name="txtCorreo" Width="200" Height="30"></TextBox>
+            <TextBlock Text="Contraseña" FontSize="20" HorizontalAlignment="Center" ></TextBlock>
+            <TextBox Name="txtContrasena" Width="200" Height="30"></TextBox>
+            <TextBlock Text="Telefono" FontSize="20" HorizontalAlignment="Center" ></TextBlock>
+            <TextBox Name="txtTelefono" Width="200" Height="30"></TextBox>
+            <TextBlock Text="Rol" FontSize="20" HorizontalAlignment="Center" ></TextBlock>
+            <TextBox Name="txtRol" Width="200" Height="30"></TextBox>
+            <Button Name="btnCrearUsuario" Content="Crear Usuario" Width="200" Height="30" Margin="10,10,10,10"></Button>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Margin="10,10,10,10">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="LIBROS" FontSize="36" Margin="10,10,130,10"></TextBlock>
+                <Button Content="Ver libros" Height="50" Width="100"></Button>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <TextBlock Text="PRESTAMOS" FontSize="36" Margin="10,10,50,10"></TextBlock>
+                <Button Content="Ver prestamos" Height="50" Width="100"></Button>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Margin="10,30,10,10">
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="USUARIOS" FontSize="36" Margin="10,10,75,10"></TextBlock>
+                <Button Content="Ver usuarios" Height="50" Width="100"></Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
