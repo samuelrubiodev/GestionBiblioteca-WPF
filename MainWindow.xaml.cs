@@ -1,4 +1,5 @@
-﻿using Biblioteca.ViewModel;
+﻿using Biblioteca.Model;
+using Biblioteca.ViewModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;

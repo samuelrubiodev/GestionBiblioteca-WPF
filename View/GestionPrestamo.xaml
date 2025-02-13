@@ -1,0 +1,41 @@
+﻿<Window x:Class="Biblioteca.View.GestionPrestamo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Biblioteca.View"
+        mc:Ignorable="d"
+        Title="GestionPrestamo" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Button Name="btnCrearPrestamo" Content="Crear prestamo" Width="200" Height="30" Margin="10,10,10,10" Command="{Binding CrearPrestamo}"></Button>
+            <Button Name="btnEliminarPrestamo" Content="Eliminar prestamo" Width="200" Height="30" Margin="10,10,10,10" Command="{Binding EliminarPrestamo}"></Button>
+        </StackPanel>
+        <DataGrid x:Name="dataGridPrestamos" 
+            AutoGenerateColumns="False" 
+            ItemsSource="{Binding Prestamos}"
+            SelectedItem="{Binding PrestamoSeleccionado}"
+            CanUserAddRows="False"
+            Margin="0,42,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="auto" />
+                <DataGridTextColumn Header="Libro" Binding="{Binding Libro}" Width="*"/>
+                <DataGridTextColumn Header="Usuario" Binding="{Binding Usuario}" Width="*" />
+                <DataGridTemplateColumn Header="Feha del prestamo" Width="200">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding FechaPrestamo}" BorderThickness="0" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Fecha de la devolución" Width="200">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding FechaDevolución}" BorderThickness="0" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
