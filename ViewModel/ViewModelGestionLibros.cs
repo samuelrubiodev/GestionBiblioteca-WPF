@@ -24,9 +24,12 @@ namespace Biblioteca.ViewModel
         private string _genero;
         private string _isbn;
 
+        private Libro _libroSeleccionado;
+
         private ObservableCollection<Libro> _libros = new ObservableCollection<Libro>();
 
         public ICommand CrearLibro { get; set; }
+        public ICommand EliminarLibro { get; set; }
 
         public ObservableCollection<Libro> Libros
         {
@@ -47,6 +50,7 @@ namespace Biblioteca.ViewModel
 
             anadirLibros();
             CrearLibro = new RelayCommand(crearLibro);
+            EliminarLibro = new RelayCommand(eliminarLibro);
         }
 
         public void crearLibro()
@@ -84,6 +88,26 @@ namespace Biblioteca.ViewModel
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Error al cargar libros: {ex.Message}");
+            }
+        }
+
+        public void eliminarLibro()
+        {
+            if (LibroSeleccionado != null)
+            {
+                var resultado = MessageBox.Show(
+                    $"¿Está seguro que desea eliminar el libro '{LibroSeleccionado.titulo}'?",
+                    "Confirmar eliminación",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+
+                if (resultado == MessageBoxResult.Yes)
+                {
+                    modeloBBDD modeloBBDD = new modeloBBDD();
+                    modeloBBDD.eliminarLibro(LibroSeleccionado);
+                    Libros.Remove(LibroSeleccionado);
+                    LibroSeleccionado = null;
+                }
             }
         }
 
@@ -142,6 +166,16 @@ namespace Biblioteca.ViewModel
             {
                 _isbn = value;
                 OnPropertyChanged(nameof(ISBN));
+            }
+        }
+
+        public Libro LibroSeleccionado
+        {
+            get { return _libroSeleccionado; }
+            set
+            {
+                _libroSeleccionado = value;
+                OnPropertyChanged(nameof(LibroSeleccionado));
             }
         }
 

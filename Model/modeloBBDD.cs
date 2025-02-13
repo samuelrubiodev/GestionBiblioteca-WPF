@@ -50,7 +50,7 @@ namespace Biblioteca.Model
             return conexionBD;
         }
 
-        public void insertarLibros(Libro libro)
+        public int insertarLibros(Libro libro)
         {
             if (conexionBD == null)
             {
@@ -71,10 +71,38 @@ namespace Biblioteca.Model
                 mySqlCommand.Prepare();
                 mySqlCommand.ExecuteNonQuery();
                 MessageBox.Show("Libro insertado: " + libro.titulo);
+                return (int) mySqlCommand.LastInsertedId;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al insertar el libro: " + libro.titulo);
+                MessageBox.Show("Error al insertar el libro, cod error: " + ex);
+                return -1;
+            }
+        }
+
+        public void eliminarLibro(Libro libro)
+        {
+            if (conexionBD == null)
+            {
+                abrirConexionBBDD();
+                if (conexionBD == null)
+                {
+                    MessageBox.Show("No hay conexión a la BBDD desde eliminarLibro");
+                }
+            }
+            try
+            {
+                MySqlCommand mySqlCommand = new MySqlCommand("DELETE FROM libros WHERE id = @id", conexionBD);
+                mySqlCommand.Parameters.AddWithValue("@id", libro.id);
+                mySqlCommand.Prepare();
+                mySqlCommand.ExecuteNonQuery();
+                MessageBox.Show("Libro eliminado correctamente", "Éxito",
+                            MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar el libro: {ex.Message}",
+                            "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         public List<Usuario> consultarUsuarios()

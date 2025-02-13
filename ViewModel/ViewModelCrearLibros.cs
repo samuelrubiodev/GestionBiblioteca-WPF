@@ -100,13 +100,17 @@ namespace Biblioteca.ViewModel
                    !string.IsNullOrWhiteSpace(ISBN);
         }
 
-
         public void crearLibro()
         {
             modeloBBDD modeloBBDD = new modeloBBDD();
             Libro libro = new Libro(Titulo,Autor,AnioPublicacion,Genero,ISBN);
-            modeloBBDD.insertarLibros(libro);
-            LibroCreado?.Invoke(this, libro);
+            int id = modeloBBDD.insertarLibros(libro);
+            libro.id = id;
+
+            if (id != -1) 
+            {
+                LibroCreado?.Invoke(this, libro);
+            }
         }
 
         public void cancelar()
