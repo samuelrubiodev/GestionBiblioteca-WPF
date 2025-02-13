@@ -11,11 +11,11 @@ namespace BaseDatos.ConexionBD
     internal class ConexionBD
     {
         private static MySqlConnection conn = null;
-        private static String SERVIDOR = "10.192.34.189";
+        private static String SERVIDOR = "localhost";
         private static uint PUERTO = 3306;
         private static String BD = "biblioteca";
-        private static String USUARIO = "samuel";
-        private static String PASSWORD = "samuelrbr20";
+        private static String USUARIO = "admin";
+        private static String PASSWORD = "admin";
 
         private static ConexionBD instance = null;
         /*1.	private: Este modificador de acceso indica que el campo padlock solo es accesible dentro de la clase conexionBasketBBDD.

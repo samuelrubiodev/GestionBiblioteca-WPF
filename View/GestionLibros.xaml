@@ -8,23 +8,21 @@
         Title="GestionLibros" Height="450" Width="800">
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
-            <Button Name="btnCrearLibro" Content="Crear Libro" Width="200" Height="30" Margin="10,10,10,10"></Button>
+            <Button Name="btnCrearLibro" Content="Crear Libro" Width="200" Height="30" Margin="10,10,10,10" Command="{Binding CrearLibro}"></Button>
             <Button Name="btnEliminarLibro" Content="Eliminar Libro" Width="200" Height="30" Margin="10,10,10,10"></Button>
         </StackPanel>
-        <DataGrid x:Name="dataGridLibros" AutoGenerateColumns="False" Margin="0,42,0,0" >
+        <DataGrid x:Name="dataGridLibros" 
+          AutoGenerateColumns="False" 
+          ItemsSource="{Binding Libros}"
+          CanUserAddRows="False"
+          Margin="0,42,0,0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="120" />
-                <DataGridTextColumn Header="Título" Binding="{Binding Titulo}" Width="120"/>
-                <DataGridTextColumn Header="Autor" Binding="{Binding Autor}" Width="120" />
-                <DataGridTemplateColumn Header="Año de publicación" Width="200">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <DatePicker SelectedDate="{Binding FechaPublicacion}" BorderThickness="0" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Género" Binding="{Binding Genero} " Width="120" />
-                <DataGridTextColumn Header="ISBN" Binding="{Binding ISBN}" Width="120"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="auto" />
+                <DataGridTextColumn Header="Título" Binding="{Binding titulo}" Width="*"/>
+                <DataGridTextColumn Header="Autor" Binding="{Binding autor}" Width="*" />
+                <DataGridTextColumn Header="Año de publicación" Binding="{Binding anio_publicacion}" Width="auto"/>
+                <DataGridTextColumn Header="Género" Binding="{Binding genero}" Width="*" />
+                <DataGridTextColumn Header="ISBN" Binding="{Binding isbn}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

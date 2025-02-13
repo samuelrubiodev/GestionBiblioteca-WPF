@@ -1,4 +1,6 @@
 ﻿using Biblioteca.Model;
+using Biblioteca.View;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -6,20 +8,25 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Biblioteca.ViewModel
 {
     public class ViewModelGestionLibros : INotifyPropertyChanged
-    {   
+    {
+        private Window _window;
+
         private int _id;
         private string _titulo;
         private string _autor;
-        private DateTime _fechaPublicacion;
+        private int _fechaPublicacion;
         private string _genero;
         private string _isbn;
 
-        private ObservableCollection<Libro> _libros;
+        private ObservableCollection<Libro> _libros = new ObservableCollection<Libro>();
+
+        public ICommand CrearLibro { get; set; }
 
         public ObservableCollection<Libro> Libros
         {
@@ -34,10 +41,50 @@ namespace Biblioteca.ViewModel
             }
         }
 
-        public ViewModelGestionLibros()
+        public ViewModelGestionLibros(Window window)
         {
-            _libros = new ObservableCollection<Libro>();
-            Libros.Add(new Libro(1, "El Quijote", "Cervantes", new DateTime(1605, 1, 1), "Novela", "1234567890"));
+            _window = window;
+
+            anadirLibros();
+            CrearLibro = new RelayCommand(crearLibro);
+        }
+
+        public void crearLibro()
+        {
+            CrearLibros crearLibros = new CrearLibros();
+            ViewModelCrearLibros viewModelCrearLibros = (ViewModelCrearLibros)crearLibros.DataContext;
+            viewModelCrearLibros.LibroCreado += OnLibroCreado;
+            crearLibros.Show();
+        }
+
+        private void OnLibroCreado(object sender, Libro nuevoLibro)
+        {
+            Libros.Add(nuevoLibro);
+        }
+
+        public void anadirLibros()
+        {
+            try
+            {
+                modeloBBDD modeloBBDD = new modeloBBDD();
+                List<Libro> libros = modeloBBDD.consultarLibros();
+
+                System.Diagnostics.Debug.WriteLine($"Libros recuperados: {libros?.Count ?? 0}");
+
+                Libros.Clear();
+                if (libros != null && libros.Any())
+                {
+                    foreach (Libro libro in libros)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Libro: {libro.titulo} - {libro.autor}");
+                        Libros.Add(libro);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error al cargar libros: {ex.Message}");
+            }
         }
 
         public int ID
@@ -68,13 +115,13 @@ namespace Biblioteca.ViewModel
             }
         }
 
-        public DateTime FechaPublicacion
+        public int AnioPublicacion
         {
             get { return _fechaPublicacion; }
             set
             {
                 _fechaPublicacion = value;
-                OnPropertyChanged(nameof(FechaPublicacion));
+                OnPropertyChanged(nameof(AnioPublicacion));
             }
         }
 

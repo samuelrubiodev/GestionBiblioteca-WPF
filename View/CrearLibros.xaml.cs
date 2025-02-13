@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteca.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,20 +16,15 @@ using System.Windows.Shapes;
 namespace Biblioteca.View
 {
     /// <summary>
-    /// Lógica de interacción para GestionBiblioteca.xaml
+    /// Lógica de interacción para CrearLibros.xaml
     /// </summary>
-    public partial class GestionBiblioteca : Window
+    public partial class CrearLibros : Window
     {
-        public GestionBiblioteca()
+        public CrearLibros()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            GestionLibros gestionLibros = new GestionLibros();
-            gestionLibros.Show();
-            this.Close();
+            ViewModelCrearLibros viewModelCrearLibros = new ViewModelCrearLibros(this);
+            this.DataContext = viewModelCrearLibros;
         }
     }
 }
