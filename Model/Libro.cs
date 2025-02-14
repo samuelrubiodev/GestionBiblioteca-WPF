@@ -36,5 +36,10 @@ namespace Biblioteca.Model
             this.genero = genero;
             this.isbn = isbn;
         }
+
+        public override string ToString()
+        {
+            return titulo;
+        }
     }
 }

@@ -1,30 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Biblioteca.Model
+﻿public class Usuario
 {
-    public class Usuario
-    {
-        public int id { get; set; }
-        public string nombre { get; set; }
-        public string apellido { get; set; }
-        public string email { get; set; }
-        public string contrsena { get; set; }
-        public string telefono { get; set; }
-        public string rol { get; set; }
+    public int ID { get; set; }
+    public string Nombre { get; set; }
+    public string Apellido { get; set; }
+    public string Email { get; set; }
+    public string Contrasena { get; set; }
+    public string Telefono { get; set; }
+    public string Rol { get; set; }
 
-        public Usuario(int id, string nombre, string apellido, string email, string contrasena, string telefono, string rol)
-        {
-            this.id = id;
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.email = email;
-            this.contrsena = contrasena;
-            this.telefono = telefono;
-            this.rol = rol;
-        }
+    public Usuario()
+    {
+
+    }
+
+    public Usuario(string nombre, string apellido, string email, string contrasena, string telefono, string rol)
+    {
+        this.Nombre = nombre;
+        this.Apellido = apellido;
+        this.Email = email;
+        this.Contrasena = contrasena;
+        this.Telefono = telefono;
+        this.Rol = rol;
+    }
+
+    public Usuario(int id, string nombre, string apellido, string email, string contrasena, string telefono, string rol)
+    {
+        this.ID = id;
+        this.Nombre = nombre;
+        this.Apellido = apellido;
+        this.Email = email;
+        this.Contrasena = contrasena;
+        this.Telefono = telefono;
+        this.Rol = rol;
+    }
+
+    public override string ToString()
+    {
+        return Nombre;
     }
 }

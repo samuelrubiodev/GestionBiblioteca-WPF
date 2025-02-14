@@ -8,6 +8,7 @@
         Title="GestionPrestamo" Height="450" Width="800">
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Button Name="btnAtras" Content="Ir al menu principal" Width="200" Height="30" Margin="10,10,10,10" Command="{Binding MenuPrincipal}"></Button>
             <Button Name="btnCrearPrestamo" Content="Crear prestamo" Width="200" Height="30" Margin="10,10,10,10" Command="{Binding CrearPrestamo}"></Button>
             <Button Name="btnEliminarPrestamo" Content="Eliminar prestamo" Width="200" Height="30" Margin="10,10,10,10" Command="{Binding EliminarPrestamo}"></Button>
         </StackPanel>
@@ -18,9 +19,9 @@
             CanUserAddRows="False"
             Margin="0,42,0,0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="auto" />
-                <DataGridTextColumn Header="Libro" Binding="{Binding Libro}" Width="*"/>
-                <DataGridTextColumn Header="Usuario" Binding="{Binding Usuario}" Width="*" />
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="auto" />
+                <DataGridTextColumn Header="Libro" Binding="{Binding Libro.titulo}" Width="*"/>
+                <DataGridTextColumn Header="Usuario" Binding="{Binding Usuario.nombre}" Width="*" />
                 <DataGridTemplateColumn Header="Feha del prestamo" Width="200">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -31,7 +32,7 @@
                 <DataGridTemplateColumn Header="Fecha de la devolución" Width="200">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <DatePicker SelectedDate="{Binding FechaDevolución}" BorderThickness="0" />
+                            <DatePicker SelectedDate="{Binding FechaDevolucion}" BorderThickness="0" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

@@ -1,0 +1,75 @@
+﻿<Window x:Class="Biblioteca.View.CrearUsuario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Crear Nuevo Usuario" 
+        Height="600" 
+        Width="401"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Nuevo Usuario" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Margin="0,0,0,20"/>
+
+        <StackPanel Grid.Row="1" Margin="0,10">
+            <Label Content="Nombre:"/>
+            <TextBox x:Name="txtNombre" 
+                     Height="25" 
+                     Margin="0,0,0,10"
+                     Text="{Binding Nombre, Mode=TwoWay}"/>
+
+            <Label Content="Apellido:"/>
+            <TextBox x:Name="txtApellido" 
+                     Height="25" 
+                     Margin="0,0,0,10"
+                     Text="{Binding Apellido, Mode=TwoWay}"/>
+
+            <Label Content="Email: "/>
+            <TextBox x:Name="txtEmail" 
+                 Height="25" 
+                 Margin="0,0,0,10"
+                 Text="{Binding Email, Mode=TwoWay}"/>
+
+            <Label Content="Contraseña: "/>
+            <TextBox x:Name="txtContrasena" 
+                     Height="25" 
+                     Margin="0,0,0,10"
+                     Text="{Binding Contrasena, Mode=TwoWay}"/>
+
+            <Label Content="Telefono: "/>
+            <TextBox x:Name="txtTelefono" 
+                     Height="25" 
+                     Margin="0,0,0,10"
+                     Text="{Binding Telefono, Mode=TwoWay}"/>
+
+            <Label Content="Rol:"/>
+            <TextBox x:Name="txtRol" 
+                     Height="25" 
+                     Margin="0,0,0,10"
+                     Text="{Binding Rol, Mode=TwoWay}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right" 
+                    Margin="0,20,0,0">
+            <Button x:Name="btnGuardar" 
+                    Content="Guardar" 
+                    Width="100" 
+                    Height="30" 
+                    Margin="0,0,10,0"
+                    Command="{Binding CrearUsuario}"/>
+            <Button x:Name="btnCancelar" 
+                    Content="Cancelar" 
+                    Width="100" 
+                    Height="30"
+                    Command="{Binding Cancelar}"/>
+        </StackPanel>
+    </Grid>
+</Window>

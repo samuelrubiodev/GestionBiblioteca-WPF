@@ -65,9 +65,9 @@ namespace Biblioteca.ViewModel
 
             foreach(Usuario usuario in listaUsuarios)
             {
-                if (usuario.nombre == "Admin" && usuario.contrsena == "admin2024")
+                if (usuario.Nombre == "Admin" && usuario.Contrasena == "admin2024")
                 {
-                    if (this.Usuario == usuario.nombre && this.Contrasena == usuario.contrsena)
+                    if (this.Usuario == usuario.Nombre && this.Contrasena == usuario.Contrasena)
                     {
                         GestionBiblioteca gestionBiblioteca = new GestionBiblioteca();
                         _window.Close();

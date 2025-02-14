@@ -8,32 +8,37 @@ namespace Biblioteca.Model
 {
     public class Prestamo
     {
-        private int Id { get; set; }
-        private Libro libro { get; set; }
-        private Usuario usuario { get; set; }
-        private DateTime fecha_prestamo { get; set; }
-        private DateTime fecha_devolucion { get; set; }
+        public int ID { get; set; }
+        public Libro Libro { get; set; }
+        public Usuario Usuario { get; set; }
+        public DateTime FechaPrestamo { get; set; }
+        public DateTime FechaDevolucion { get; set; }
 
         public Prestamo()
         {
 
         }
 
-        public Prestamo(int id, Libro, Libro, Usuario usuario, DateTime fecha_prestamo, DateTime fecha_devolucion)
+        public Prestamo(int id, Libro libro,  Usuario usuario, DateTime fecha_prestamo, DateTime fecha_devolucion)
         {
-            this.Id = id;
-            this.libro = libro;
-            this.usuario = usuario;
-            this.fecha_prestamo = fecha_prestamo;
-            this.fecha_devolucion = fecha_devolucion;
+            this.ID = id;
+            this.Libro = libro;
+            this.Usuario = usuario;
+            this.FechaPrestamo = fecha_prestamo;
+            this.FechaDevolucion = fecha_devolucion;
         }
 
-        public Prestamo(Libro, Libro, Usuario usuario, DateTime fecha_prestamo, DateTime fecha_devolucion)
+        public Prestamo(Libro libro, Usuario usuario, DateTime fecha_prestamo, DateTime fecha_devolucion)
         {
-            this.libro = libro;
-            this.usuario = usuario;
-            this.fecha_prestamo = fecha_prestamo;
-            this.fecha_devolucion = fecha_devolucion;
+            this.Libro = libro;
+            this.Usuario = usuario;
+            this.FechaPrestamo = fecha_prestamo;
+            this.FechaDevolucion = fecha_devolucion;
+        }
+
+        public override string ToString()
+        {
+            return ID.ToString();
         }
 
     }

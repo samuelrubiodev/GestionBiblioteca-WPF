@@ -20,10 +20,10 @@ namespace Biblioteca.View
     /// </summary>
     public partial class GestionPrestamo : Window
     {
-        public GestionPrestamo()
+        public GestionPrestamo(GestionBiblioteca gestionBiblioteca)
         {
             InitializeComponent();
-            ViewModelGestionPrestamos viewModelGestionPrestamos = new ViewModelGestionPrestamos();
+            ViewModelGestionPrestamos viewModelGestionPrestamos = new ViewModelGestionPrestamos(this,gestionBiblioteca);
             this.DataContext = viewModelGestionPrestamos;
         }
     }

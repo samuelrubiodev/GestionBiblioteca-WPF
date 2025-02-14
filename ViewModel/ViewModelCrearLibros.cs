@@ -91,15 +91,6 @@ namespace Biblioteca.ViewModel
             Cancelar = new RelayCommand(cancelar);
         }
 
-        public bool PuedeCrearLibro()
-        {
-            return !string.IsNullOrWhiteSpace(Titulo) &&
-                   !string.IsNullOrWhiteSpace(Autor) &&
-                   AnioPublicacion > 0 &&
-                   !string.IsNullOrWhiteSpace(Genero) &&
-                   !string.IsNullOrWhiteSpace(ISBN);
-        }
-
         public void crearLibro()
         {
             modeloBBDD modeloBBDD = new modeloBBDD();
@@ -110,6 +101,7 @@ namespace Biblioteca.ViewModel
             if (id != -1) 
             {
                 LibroCreado?.Invoke(this, libro);
+                _window.Close();
             }
         }
 

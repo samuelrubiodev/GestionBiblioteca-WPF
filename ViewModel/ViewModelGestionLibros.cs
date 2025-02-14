@@ -16,6 +16,7 @@ namespace Biblioteca.ViewModel
     public class ViewModelGestionLibros : INotifyPropertyChanged
     {
         private Window _window;
+        private GestionBiblioteca _gestionBiblioteca;
 
         private int _id;
         private string _titulo;
@@ -30,6 +31,7 @@ namespace Biblioteca.ViewModel
 
         public ICommand CrearLibro { get; set; }
         public ICommand EliminarLibro { get; set; }
+        public ICommand MenuPrincipal { get; set; }
 
         public ObservableCollection<Libro> Libros
         {
@@ -44,13 +46,21 @@ namespace Biblioteca.ViewModel
             }
         }
 
-        public ViewModelGestionLibros(Window window)
+        public ViewModelGestionLibros(Window window, GestionBiblioteca gestionBiblioteca)
         {
             _window = window;
+            _gestionBiblioteca = gestionBiblioteca;
 
             anadirLibros();
             CrearLibro = new RelayCommand(crearLibro);
             EliminarLibro = new RelayCommand(eliminarLibro);
+            MenuPrincipal = new RelayCommand(menuPrincipal);
+        }
+
+        public void menuPrincipal()
+        {
+            _window.Close();
+            _gestionBiblioteca.Show();
         }
 
         public void crearLibro()
@@ -108,6 +118,10 @@ namespace Biblioteca.ViewModel
                     Libros.Remove(LibroSeleccionado);
                     LibroSeleccionado = null;
                 }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un libro para eliminarlo", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

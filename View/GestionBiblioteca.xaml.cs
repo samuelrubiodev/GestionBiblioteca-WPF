@@ -26,9 +26,23 @@ namespace Biblioteca.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            GestionLibros gestionLibros = new GestionLibros();
+            GestionLibros gestionLibros = new GestionLibros(this);
             gestionLibros.Show();
-            this.Close();
+            this.Hide();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            GestionPrestamo gestionPrestamos = new GestionPrestamo(this);
+            gestionPrestamos.Show();
+            this.Hide();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            GestionUsuarios gestionUsuarios = new GestionUsuarios(this);
+            gestionUsuarios.Show();
+            this.Hide();
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Biblioteca.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,14 +16,14 @@ using System.Windows.Shapes;
 namespace Biblioteca.View
 {
     /// <summary>
-    /// Lógica de interacción para GestionLibros.xaml
+    /// Lógica de interacción para GestionUsuarios.xaml
     /// </summary>
-    public partial class GestionLibros : Window
+    public partial class GestionUsuarios : Window
     {
-        public GestionLibros(GestionBiblioteca gestionBiblioteca)
+        public GestionUsuarios(GestionBiblioteca gestionBiblioteca)
         {
             InitializeComponent();
-            ViewModel.ViewModelGestionLibros vm = new ViewModel.ViewModelGestionLibros(this, gestionBiblioteca);
+            ViewModelGestionUsuarios vm = new ViewModelGestionUsuarios(this, gestionBiblioteca);
             this.DataContext = vm;
         }
     }
