@@ -22,8 +22,8 @@
         </StackPanel>
 
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Center">
-            <TextBlock Text="Usuario" TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Center" Margin="10,10,10,10"></TextBlock>
-            <TextBox Name="txtUsuario" Width="200" Height="30" HorizontalAlignment="Center" Margin="10,10,10,10" Text="{Binding Usuario, Mode=TwoWay}"></TextBox>
+            <TextBlock Text="Email" TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Center" Margin="10,10,10,10"></TextBlock>
+            <TextBox Name="txtEmail" Width="200" Height="30" HorizontalAlignment="Center" Margin="10,10,10,10" Text="{Binding Usuario, Mode=TwoWay}"></TextBox>
             <TextBlock Text="Contraseña" TextWrapping="Wrap" FontSize="20" HorizontalAlignment="Center" Margin="10,10,10,10"></TextBlock>
             <TextBox Name="txtContrasena" Width="200" Height="30" HorizontalAlignment="Center" Margin="10,10,10,10" Text="{Binding Contrasena, Mode=TwoWay}"></TextBox>
             <Button Name="btnIniciarSesion" Content="Iniciar Sesión" Width="200" 

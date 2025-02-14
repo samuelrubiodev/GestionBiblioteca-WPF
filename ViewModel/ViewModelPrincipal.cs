@@ -65,9 +65,9 @@ namespace Biblioteca.ViewModel
 
             foreach(Usuario usuario in listaUsuarios)
             {
-                if (usuario.Nombre == "Admin" && usuario.Contrasena == "admin2024")
+                if (usuario.Email == "admin@biblioteca.com" && usuario.Contrasena == "admin2024")
                 {
-                    if (this.Usuario == usuario.Nombre && this.Contrasena == usuario.Contrasena)
+                    if (this.Usuario == usuario.Email && this.Contrasena == usuario.Contrasena)
                     {
                         GestionBiblioteca gestionBiblioteca = new GestionBiblioteca();
                         _window.Close();
@@ -76,7 +76,7 @@ namespace Biblioteca.ViewModel
                     }
                     else
                     {
-                        MessageBox.Show("Usuario o contraseña incorrectos");
+                        MessageBox.Show("Email o contraseña incorrectos");
                     }
                 }
             }
