@@ -63,22 +63,27 @@ namespace Biblioteca.ViewModel
             modeloBBDD modeloBBDD = new modeloBBDD();
             List<Usuario> listaUsuarios = modeloBBDD.consultarUsuarios();
 
-            foreach(Usuario usuario in listaUsuarios)
+            bool usuarioCorrecto = false;
+
+            foreach (Usuario usuario in listaUsuarios)
             {
-                if (usuario.Email == "admin@biblioteca.com" && usuario.Contrasena == "admin2024")
+                if (this.Usuario == usuario.Email && this.Contrasena == usuario.Contrasena 
+                    && usuario.Rol == "ADMIN")
                 {
-                    if (this.Usuario == usuario.Email && this.Contrasena == usuario.Contrasena)
-                    {
-                        GestionBiblioteca gestionBiblioteca = new GestionBiblioteca();
-                        _window.Close();
-                        gestionBiblioteca.Show();
-                        break;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Email o contraseña incorrectos");
-                    }
+                    usuarioCorrecto = true;
+                    GestionBiblioteca gestionBiblioteca = new GestionBiblioteca();
+                    _window.Close();
+                    gestionBiblioteca.Show();
+                    break;
+                } else
+                {
+                    usuarioCorrecto = false;
                 }
+            }
+
+            if (!usuarioCorrecto)
+            {
+                MessageBox.Show("El usuario no es Administrador y/o el email y/o contraseña son incorrectos", "Login incorrecto", MessageBoxButton.OK,MessageBoxImage.Error);
             }
         }
     }
